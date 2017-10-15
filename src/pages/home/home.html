@@ -9,13 +9,23 @@
 
 <ion-content padding>
 
-  changesjkchdsk
-  xcvjhxgvjhx
+  changesjkchdsk xcvjhxgvjhx
   <h3>{{environment}}</h3>
 
   <p>
     If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
   </p>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <ul>
+    <li *ngFor="let item of items | async">
+      {{ item.id }}
+
+      <p *ngFor="let sub of item.subCollection | async">
+        {{sub | json}}
+      </p>
+
+    </li>
+  </ul>
+
+  <button ion-button secondary (click)="add()">Toggle Menu</button>
 </ion-content>
