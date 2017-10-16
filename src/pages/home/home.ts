@@ -1,4 +1,4 @@
-import { Item } from './../../models/ItemModel';
+import { Item, subCollection } from './../../models/ItemModel';
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { ENVIRONMENT } from './../../environments/environment.default';
 import { Component } from '@angular/core';
@@ -16,7 +16,6 @@ export class HomePage {
   environment: any;
 
   items: Observable<Item[]>;
-  test: Observable<Item[]>;
 
   constructor(public navCtrl: NavController, private firebase: FirebaseProvider) {
     this.environment = ENVIRONMENT.environment;
@@ -24,11 +23,17 @@ export class HomePage {
 
     this.items = this.firebase.getSnapshotBase<Item>("items").map(data => {
       data.forEach(item => {
-        item.subCollection = this.firebase.getCollectionList(`items/${item.id}/subCollection`);
+        item.subCollection = this.firebase.getCollectionList<subCollection>(`items/${item.id}/subCollection`);
       });
       return data;
 
     })
+
+  }
+
+  public innerAdd(id) {
+    const newItem: subCollection = { blah: "Testing" + id };
+    this.firebase.setItem(`items/${id}/subCollection`, newItem);
 
   }
 

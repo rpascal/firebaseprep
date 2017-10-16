@@ -18,6 +18,7 @@
       <p *ngFor="let sub of item.subCollection | async">
         {{sub | json}}
       </p>
+      <button ion-button secondary (click)="innerAdd(item.id)">Add Sub</button>
 
     </li>
   </ul>
