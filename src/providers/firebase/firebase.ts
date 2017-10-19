@@ -5,12 +5,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
-/*
-  Generated class for the FirebaseProvider provider.
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class FirebaseProvider {
 
@@ -92,7 +87,7 @@ export class FirebaseProvider {
 
   setItem<T extends baseInterface>(path: string, object: T) {
     console.log(path)
-    const id = this.afs.createId();
+    const id = this.getID();
     const item: T = Object.assign({ id: id }, object);
     return this.afs.collection<T>(path).doc(id).set(item);
   }
