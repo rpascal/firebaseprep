@@ -3,14 +3,9 @@ import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { ENVIRONMENT } from './../../environments/environment.default';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-<<<<<<< HEAD
- 
-=======
 
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
-
->>>>>>> 864507c4a17da9834ee88f17642d450bbcefb0b2
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
